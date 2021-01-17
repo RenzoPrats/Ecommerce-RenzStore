@@ -1,0 +1,77 @@
+{% load static %}
+<div class="header" id="home1">
+		<div class="container">
+			<div class="w3l_login">
+                {% if user.is_anonymous %}
+                <div class="w3l_login">
+				    <a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+			    </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                    <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+                {% endif %}
+			</div>
+			<div class="w3l_logo">
+				<h1><a href="{% url 'index' %}">Renz Store<span>Sua Loja. Seu Lugar.</span></a></h1>
+			</div>
+			<div class="search">
+				<input class="search_box" type="checkbox" id="search_box">
+				<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+
+                <div class="search_form">
+                    <form action="{% url 'search' %}" method="get">
+						<input type="text" name="nome" required="" autocomplete="off" placeholder="Pesquisar...">
+						<input type="submit" value="Ok">
+					</form>
+				</div>
+
+            </div>
+			<div class="cart cart box_1">
+				<form action="#" method="post" class="last">
+					<input type="hidden" name="cmd" value="_cart" />
+					<input type="hidden" name="display" value="1" />
+					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% for a in backends.associated %}
+
+        {% if a.provider == 'facebook' %}
+            {% if user.profile.nome %}
+                <div class="alert alert-success agileits" role="alert">
+					<strong>Seja bem-vindo(a) {{ user.profile.nome }}!</strong>
+				</div>
+            {% else %}
+                <div class="alert alert-success agileits" role="alert">
+					<strong>Seja bem-vindo(a) {{ a.extra_data.full_name }}!</strong>
+                </div>
+            {% endif %}
+
+        {% endif %}
+
+        {% if a.provider == 'google-oauth2' %}
+            {% if user.profile.nome %}
+                <div class="alert alert-success agileits" role="alert">
+					<strong>Seja bem-vindo(a) {{ user.profile.nome }}!</strong>
+				</div>
+
+            {% else %}
+                <div class="alert alert-success agileits" role="alert">
+					<strong>Seja bem-vindo(a) {{ a.user.get_username }}!</strong>
+				</div>
+            {% endif %}
+
+        {% endif %}
+    {% endfor %}
+    <div class="container">
+            {% if messages %}
+              {% for m in messages %}
+                <div class="alert alert-{{ m.tags }}">
+                  <button type="button" class="close" data-dismiss="alert"></button>
+                  <strong>{{ m }}</strong>
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>

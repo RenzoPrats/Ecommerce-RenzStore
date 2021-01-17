@@ -1,0 +1,313 @@
+{% load static %}
+<div class="single">
+		<div class="container">
+			<div class="col-md-4 single-left">
+				<div class="flexslider">
+					<ul class="slides">
+						<li data-thumb="{{ produto.imagem1.single.url }}">
+							<div class="thumb-image"> <img src="{{ produto.imagem1.single.url }}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+						</li>
+						{% if produto.imagem2 %}
+                        <li data-thumb="{{ produto.imagem2.single.url }}">
+							 <div class="thumb-image"> <img src="{{ produto.imagem2.single.url }}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+						</li>
+                        {% endif %}
+                        {% if produto.imagem3 %}
+						<li data-thumb="{{ produto.imagem3.single.url }}">
+						   <div class="thumb-image"> <img src="{{ produto.imagem3.single.url }}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+						</li>
+                        {% endif %}
+					</ul>
+				</div>
+				<!-- flexslider -->
+					<script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+					<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+					<script>
+					// Can also be used with $(document).ready()
+					$(window).load(function() {
+					  $('.flexslider').flexslider({
+						animation: "slide",
+						controlNav: "thumbnails"
+					  });
+					});
+					</script>
+				<!-- flexslider -->
+				<!-- zooming-effect -->
+					<script src="{% static 'js/imagezoom.js' %}"></script>
+				<!-- //zooming-effect -->
+			</div>
+			<div class="col-md-8 single-right">
+				<h3>{{ produto.nome }}</h3>
+                <div class="rating">
+                        {% if media == 5 %}
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}"alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                    {% endif %}
+                    {% if media == 4 %}
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}"alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                    {% endif %}
+                    {% if media == 3 %}
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}"alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                    {% endif %}
+                    {% if media == 2 %}
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}"alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                    {% endif %}
+                    {% if media == 1 %}
+                        <div class="rating-left">
+                            <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}"alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                        <div class="rating-left">
+                            <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                        </div>
+                    {% endif %}
+                    <div class="clearfix"> </div>
+                </div>
+				<div class="description">
+					<h5><i>Descrição</i></h5>
+					<p>{{ produto.descricao }}</p>
+				</div>
+				<div class="occasional">
+				</div>
+				<div class="simpleCart_shelfItem">
+					<p><span>R${{ produto.preco }}</span> <i class="item_price">R${{ produto.preco_desconto }}</i></p>
+					<form action="#" method="post">
+						<input type="hidden" name="cmd" value="_cart">
+						<input type="hidden" name="add" value="1">
+						<input type="hidden" name="w3ls_item" value="{{ produto.nome }}">
+						<input type="hidden" name="amount" value="{{ produto.preco_desconto }}">
+						<button type="submit" class="w3ls-cart">Adicionar Ao Carrinho</button>
+					</form>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<div class="additional_info">
+		<div class="container">
+			<div class="sap_tabs">
+				<div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
+					<ul>
+						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Informações do Produto</span></li>
+						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Opiniões</span></li>
+					</ul>
+					<div class="tab-1 resp-tab-content additional_info_grid" aria-labelledby="tab_item-0">
+						<h3>{{ produto.nome }}</h3>
+						<p>{{ produto.informacao }}</p>
+					</div>
+
+					<div class="tab-2 resp-tab-content additional_info_grid" aria-labelledby="tab_item-1">
+						<h4>Avaliações</h4>
+                        {% for a in avaliacoes %}
+                        <div class="additional_info_sub_grids">
+							<div class="col-xs-10 additional_info_sub_grid_right">
+								<div class="additional_info_sub_grid_rightl">
+									<a>{% if a.usuario.profile.nome %}{{ a.usuario.profile.nome }}{% else %}{{ a.usuario.full_name }}{% endif %}</a>
+									<h5>{{ a.criados }}</h5>
+									<p>{{ a.comentario }}</p>
+								</div>
+								<div class="additional_info_sub_grid_rightr">
+									<div class="rating">
+                                        {% if a.nota == '5' %}
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}"alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                        {% endif %}
+                                        {% if a.nota == '4' %}
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}"alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                        {% endif %}
+                                        {% if a.nota == '3' %}
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}"alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                        {% endif %}
+                                        {% if a.nota == '2' %}
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}"alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                        {% endif %}
+                                        {% if a.nota == '1' %}
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}"alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                            <div class="rating-left">
+                                                <img src="{% static 'images/star.png' %}" alt=" " class="img-responsive">
+                                            </div>
+                                        {% endif %}
+                                        {% if a.usuario == request.user or request.user.is_admin %}
+                                            <form action="{% url 'del_avaliacao' a.pk %}" method="post">
+                                              {% csrf_token %}
+                                                <input type="hidden" name="next" value="{{ request.path }}">
+                                                <div class="additional_info_sub_grid_rightr">
+                                                    <button class="btn"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </form>
+                                        {% endif %}
+                                        <div class="clearfix"> </div>
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+                        {% endfor %}
+                        <div class="review_grids">
+                            {% if user.is_authenticated %}
+							<h5>Adicionar Um Comentário</h5>
+							<form method="post">{% csrf_token %}
+                                <div class="rating1">
+                                    <span class="starRating">
+                                        <input id="rating5" type="radio" name="nota" value="5">
+                                        <label for="rating5">5</label>
+                                        <input id="rating4" type="radio" name="nota" value="4">
+                                        <label for="rating4">4</label>
+                                        <input id="rating3" type="radio" name="nota" value="3" checked>
+                                        <label for="rating3">3</label>
+                                        <input id="rating2" type="radio" name="nota" value="2">
+                                        <label for="rating2">2</label>
+                                        <input id="rating1" type="radio" name="nota" value="1">
+                                        <label for="rating1">1</label>
+                                    </span>
+                                </div>
+								<textarea name="comentario" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Avaliação';}" required="">Avaliação</textarea>
+								<input type="submit" value="Enviar">
+							</form>
+                            {% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="{% static 'js/easyResponsiveTabs.js' %}" type="text/javascript"></script>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					$('#horizontalTab1').easyResponsiveTabs({
+						type: 'default', //Types: default, vertical, accordion
+						width: 'auto', //auto or any width like 600px
+						fit: true   // 100% fit in a container
+					});
+				});
+			</script>
+		</div>
+	</div>

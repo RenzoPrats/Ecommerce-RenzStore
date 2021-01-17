@@ -1,0 +1,18 @@
+{% load static %}
+<div class="banner-bottom1">
+		<div class="agileinfo_banner_bottom1_grids">
+			<div class="col-md-7 agileinfo_banner_bottom1_grid_left">
+				<h3>Grande Evento de Inauguração<span>20% <i>Off</i></span></h3>
+				<a href="{% url 'products' %}">Compre Já</a>
+			</div>
+			<div class="col-md-5 agileinfo_banner_bottom1_grid_right">
+				<h4>Grandes Ofertas</h4>
+				<div class="timer_wrap">
+					<div id="counter"> </div>
+				</div>
+				<script src="{% static 'js/jquery.countdown.js' %}"></script>
+				<script src="{% static 'js/script.js' %}"></script>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>

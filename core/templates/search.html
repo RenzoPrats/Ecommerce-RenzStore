@@ -1,0 +1,458 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<title>Loja de Eletrônicos Online | Renz</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<!-- Custom Theme files -->
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/fasthover.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- font-awesome icons -->
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+<!-- //font-awesome icons -->
+<!-- js -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- //js -->
+<!-- web fonts -->
+<link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- //web fonts -->
+<!-- for bootstrap working -->
+<script type="text/javascript" src="{% static 'js/bootstrap-3.1.1.min.js' %}"></script>
+<!-- //for bootstrap working -->
+<!-- start-smooth-scrolling -->
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- //end-smooth-scrolling -->
+</head>
+<body>
+	<!-- header modal -->
+	<!-- header -->
+{% load static %}
+<div class="header" id="home1">
+		<div class="container">
+			<div class="w3l_login">
+                {% if user.is_anonymous %}
+                <div class="w3l_login">
+				    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+			    </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                    <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+                {% endif %}
+			</div>
+			<div class="w3l_logo">
+				<h1><a href="{% url 'index' %}">Renz Store<span>Sua Loja. Seu Lugar.</span></a></h1>
+			</div>
+			<div class="search">
+				<input class="search_box" type="checkbox" id="search_box">
+				<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+				<div class="search_form">
+                    <form action="{% url 'search' %}" method="get">
+						<input type="text" name="nome" placeholder="Pesquisar...">
+						<input type="submit" value="Ok">
+					</form>
+				</div>
+			</div>
+			<div class="cart cart box_1">
+				<form action="#" method="post" class="last">
+					<input type="hidden" name="cmd" value="_cart" />
+					<input type="hidden" name="display" value="1" />
+					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+    <div class="container">
+            {% if messages %}
+              {% for m in messages %}
+                <div class="alert alert-{{ m.tags }}">
+                  <button type="button" class="close" data-dismiss="alert"></button>
+                  <strong>{{ m }}</strong>
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+	<!-- //header -->
+	<!-- navigation -->
+	<div class="navigation">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header nav_2">
+					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<!-- Mega Menu -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle act" data-toggle="dropdown" >Produtos <b class="caret"></b></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									{% include 'navigation.html' %}
+									<div class="col-sm-4">
+										<div class="w3ls_products_pos">
+											<h4>30%<i>Off/-</i></h4>
+											<img src="{% static 'images/1.jpg' %}" alt=" " class="img-responsive" />
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+						</li>
+						<li><a href="{% url 'about' %}">Sobre Nós</a></li>
+						<li><a href="{% url 'mail' %}">Contato</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- //navigation -->
+	<!-- banner -->
+	<div class="banner banner1">
+		<div class="container">
+			<h2>Ofertas Imperdíveis em <span>Smartphones</span> Até <i>35% De Desconto</i></h2>
+		</div>
+	</div>
+	<!-- breadcrumbs -->
+	<div class="breadcrumb_dress">
+		<div class="container">
+			<ul>
+				<li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
+				<li>Search</li>
+			</ul>
+		</div>
+	</div>
+	<!-- mobiles -->
+        <div class="mobiles">
+		<div class="container">
+			<div class="w3ls_mobiles_grids">
+				<div class="col-md-4 w3ls_mobiles_grid_left">
+					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Categorias</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							  <div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+								  <h4 class="panel-title asd">
+									<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Lançamentos
+									</a>
+								  </h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								  <div class="panel-body panel_text">
+									<ul>
+										<li><a href="{% url 'products' %}?order=smartphone">SmartPhones</a></li>
+										<li><a href="{% url 'products1' %}?order=notebooks">Notebooks</a></li>
+                                        <li><a href="{% url 'products2' %}?order=tv">Tv's</a></li>
+										<li><a href="{% url 'products1' %}?order=smartwatches">SmartWatches</a></li>
+										<li><a href="{% url 'products2' %}?order=refrigeradores">Refrigeradores</a></li>
+									</ul>
+								  </div>
+								</div>
+							  </div>
+							  <div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingTwo">
+								  <h4 class="panel-title asd">
+									<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Acessórios
+									</a>
+								  </h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+								   <div class="panel-body panel_text">
+									<ul>
+										<li><a href="{% url 'products2' %}?order=trituradores">Trituradores</a></li>
+										<li><a href="{% url 'products2' %}?order=aquecedores">Aquecedores</a></li>
+										<li><a href="{% url 'products2' %}?order=brinquedos_infantis">Brinquedos Infantis</a></li>
+										<li><a href="{% url 'products2' %}?order=filtros">Filtros</a></li>
+										<li><a href="{% url 'products2' %}?order=ac">AC</a></li>
+									</ul>
+								  </div>
+								</div>
+							  </div>
+							</div>
+							<ul class="panel_bottom">
+								<li><a href="{% url 'products' %}?order=loja_de_verao">Loja de Verão</a></li>
+								<li><a href="{% url 'products' %}?order=marcas_em_destaque">Marcas em Destaque</a></li>
+								<li><a href="{% url 'products' %}?order=ofertas_do_dia">Ofertas do Dia</a></li>
+								<li><a href="{% url 'products1' %}?order=novos_smartwatches">Novos SmartWatches</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 w3ls_mobiles_grid_right">
+					<div class="col-md-6 w3ls_mobiles_grid_right_left">
+						<div class="w3ls_mobiles_grid_right_grid1">
+							<img src="{% static 'images/49.jpg' %}" alt=" " class="img-responsive" />
+							<div class="w3ls_mobiles_grid_right_grid1_pos1">
+								<h3>Melhor Preço em<span> Notebooks</span>Até 50% Off</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 w3ls_mobiles_grid_right_left">
+						<div class="w3ls_mobiles_grid_right_grid1">
+							<img src="{% static 'images/51.jpg' %}" alt=" " class="img-responsive" />
+							<div class="w3ls_mobiles_grid_right_grid1_pos">
+								<h3>Eletrodomésticos<span>Super</span>Ofertas</h3>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+
+					<div class="w3ls_mobiles_grid_right_grid2">
+						<div class="w3ls_mobiles_grid_right_grid2_left">
+							<h3>Mostrando Resultados: </h3>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+
+                    {% for p in page_obj %}
+                        {% if forloop.first %}
+                            <div class="w3ls_mobiles_grid_right_grid3">
+                        {% endif %}
+
+                        {% if forloop.counter0|divisibleby:"3" and not forloop.first %}
+                            <div class="w3ls_mobiles_grid_right_grid3">
+                        {% endif %}
+
+                                <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
+                                    <div class="agile_ecommerce_tab_left mobiles_grid">
+                                        <div class="hs-wrapper hs-wrapper2">
+                                            <img src="{{ p.imagem1.thumb.url }}" alt=" " class="img-responsive" />
+                                            <div class="w3_hs_bottom w3_hs_bottom_sub1">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#" data-toggle="modal" data-target="#myModal{{ p.id }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h5><a href="{% url 'single' p.pk %}">{{ p.nome }}</a></h5>
+                                        <div class="simpleCart_shelfItem">
+                                            <p><span>R${{ p.preco }}</span> <i class="item_price">R${{ p.preco_desconto }}</i></p>
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="w3ls_item" value="{{ p.nome }}" />
+                                                <input type="hidden" name="amount" value="{{ p.preco_desconto }}"/>
+                                                <button type="submit" class="w3ls-cart">Adicionar Ao Carrinho</button>
+                                            </form>
+                                        </div>
+                                        {% if p.criados >= data%}
+                                        <div class="mobiles_grid_pos">
+                                            <h6>Novo</h6>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                        {% if forloop.counter|divisibleby:"3" %}
+                                <div class="clearfix"> </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+    <!-- paginacao-->
+                {% if is_paginated %}
+
+                <center><nav aria-label="navegacao-paginacao">
+
+                    <ul class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&nome={{ nome }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                        {% endif %}
+
+                        {% for num in paginator.page_range %}
+
+                            {% if page_obj.number == num %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num }}&nome={{ nome }}">{{ num }}</a></li>
+                            {% endif %}
+
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&nome={{ nome }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+                        {% endif %}
+
+                    </ul>
+
+                </nav></center>
+
+        {% endif %}
+    <!-- Endpaginacao -->
+    <!-- //mobiles -->
+
+    <!-- modal -->
+    {% load static %}
+        {% for p in page_obj %}
+    <div class="modal video-modal fade" id="myModal{{ p.id }}" tabindex="-1" role="dialog" aria-labelledby="myModal9">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<section>
+					<div class="modal-body">
+						<div class="col-md-5 modal_body_left">
+							<img src="{{ p.imagem1.thumb.url }}" alt=" " class="img-responsive" />
+						</div>
+						<div class="col-md-7 modal_body_right">
+							<h4>{{ p.nome }}</h4>
+							<p>{{ p.descricao }}</p>
+							<div class="rating">
+								<div class="rating-left">
+									<img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="rating-left">
+									<img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="rating-left">
+									<img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="rating-left">
+									<img src="{% static 'images/star-.png' %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="rating-left">
+									<img src="{% static 'images/star.png' %}" alt=" " class="img-responsive" />
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="modal_body_right_cart simpleCart_shelfItem">
+								<p><span>R${{ p.preco }}</span> <i class="item_price">R${{ p.preco_desconto }}</i></p>
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" />
+									<input type="hidden" name="w3ls_item" value="{{ p.nome }}" />
+									<input type="hidden" name="amount" value="{{ p.preco_desconto }}"/>
+									<button type="submit" class="w3ls-cart">Adicionar Ao Carrinho</button>
+								</form>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+    <!-- modal -->
+
+	<!-- Related Products -->
+	<!-- //Related Products -->
+
+    <!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="col-md-6 w3agile_newsletter_left">
+				<h3>Newsletter</h3>
+				<p>Fique por dentro de todas as novidades e promoções.</p>
+			</div>
+			<div class="col-md-6 w3agile_newsletter_right">
+				<form action="{% url 'newsletter' %}" method="post">{% csrf_token %}
+					<input type="email" name="email_registro" placeholder="Email" required="" autocomplete="off">
+					<input type="submit" value="" />
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //newsletter -->
+
+    <!-- footer -->
+	{% include 'footer.html' %}
+	<!-- //footer -->
+	<script type="text/javascript">
+		$(window).load(function() {
+			$("#flexiselDemo2").flexisel({
+				visibleItems:4,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint:568,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint:667,
+						visibleItems:2
+					},
+					tablet: {
+						changePoint:768,
+						visibleItems: 3
+					}
+				}
+			});
+
+		});
+	</script>
+	<script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>
+	<!-- cart-js -->
+	<script src="{% static 'js/minicart.js' %}"></script>
+	<script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) {
+        		}
+        	}
+        });
+    </script>
+    {% bootstrap_javascript jquery='full' %}
+	<!-- //cart-js -->
+</body>
+</html>

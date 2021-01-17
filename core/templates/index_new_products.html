@@ -1,0 +1,36 @@
+{% load static %}
+<div class="new-products">
+		<div class="container">
+			<h3>Novos Produtos</h3>
+			<div class="agileinfo_new_products_grids">
+                {% for np in novos_produtos|slice:":4" %}
+                <div class="col-md-3 agileinfo_new_products_grid">
+					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+						<div class="hs-wrapper hs-wrapper1">
+							<img src="{{ np.imagem1.thumb.url }}" alt=" " class="img-responsive" />
+							<div class="w3_hs_bottom w3_hs_bottom_sub">
+								<ul>
+									<li>
+										<a href="#" data-toggle="modal" data-target="#myModal{{ np.id }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                    </li>
+								</ul>
+							</div>
+						</div>
+						<h5><a href="{% url 'single' np.pk %}">{{ np.nome }}</a></h5>
+						<div class="simpleCart_shelfItem">
+							<p><span>R${{ np.preco }}</span> <i class="item_price">R${{ np.preco_desconto }}</i></p>
+							<form action="#" method="post">
+								<input type="hidden" name="cmd" value="_cart">
+								<input type="hidden" name="add" value="1">
+								<input type="hidden" name="w3ls_item" value="{{ np.nome }}">
+								<input type="hidden" name="amount" value="{{ np.preco_desconto }}">
+								<button type="submit" class="w3ls-cart">Adicionar Ao Carrinho</button>
+							</form>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+                <div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>

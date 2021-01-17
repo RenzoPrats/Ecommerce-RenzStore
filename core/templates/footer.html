@@ -1,0 +1,63 @@
+{% load static %}
+<div class="footer">
+		<div class="container">
+			<div class="w3_footer_grids">
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Contato</h3>
+					<p>Para entrar em contato utilize um dos meios a seguir</p>
+					<ul class="address">
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Av. Brg. Faria Lima, 2232,<span>São Paulo.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:renzoprats@hotmail.com">noreply@renz.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+55 11 987654321</li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Informação</h3>
+					<ul class="info">
+						<li><a href="{% url 'about' %}">Sobre Nós</a></li>
+						<li><a href="{% url 'mail' %}">Contato</a></li>
+						<li><a href="{% url 'faq' %}">FAQ's</a></li>
+						<li><a href="{% url 'products' %}">Produtos Especiais</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Categoria</h3>
+					<ul class="info">
+						<li><a href="{% url 'products' %}?order=smartphone">SmartPhones</a></li>
+						<li><a href="{% url 'products1' %}?order=notebooks">Notebooks</a></li>
+						<li><a href="{% url 'products2' %}?order=tv">Tv's</a></li>
+						<li><a href="{% url 'products1' %}?order=smartwatches">SmartWatches</a></li>
+						<li><a href="{% url 'products2' %}?order=eletrodomesticos">Eletrodomésticos</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Profile</h3>
+					<ul class="info">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li><a href="{% url 'products1' %}?order=loja_de_verao">Ofertas Do Dia</a></li>
+					</ul>
+					<h4>Acompanhe-nos</h4>
+					<div class="agileits_social_button">
+						<ul>
+							<li><a href="#" class="facebook"> </a></li>
+							<li><a href="#" class="twitter"> </a></li>
+							<li><a href="#" class="google"> </a></li>
+							<li><a href="#" class="pinterest"> </a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-copy">
+			<div class="footer-copy1">
+				<div class="footer-copy-pos">
+					<a href="#home1" class="scroll"><img src="{% static 'images/arrow.png' %}" alt=" " class="img-responsive" /></a>
+				</div>
+			</div>
+			<div class="container">
+				<p>&copy; 2020 Renz Electronic Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+                <p>&copy; Developed by <a href="https://github.com/RenzoPrats">Renzop</a></p>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,37 @@
+{% load static %}
+    {% for p in produtos %}
+    <div class="modal video-modal fade" id="myModal{{ p.id }}" tabindex="-1" role="dialog" aria-labelledby="myModal9">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<section>
+					<div class="modal-body">
+						<div class="col-md-5 modal_body_left">
+							<img src="{{ p.imagem1.thumb.url }}" alt=" " class="img-responsive" />
+						</div>
+						<div class="col-md-7 modal_body_right">
+							<h4>{{ p.nome }}</h4>
+							<p>{{ p.descricao }}</p>
+
+								<div class="clearfix"> </div>
+							</div>
+							<div class="modal_body_right_cart simpleCart_shelfItem">
+								<p><span>R${{ p.preco }}</span> <i class="item_price">R${{ p.preco_desconto }}</i></p>
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart" />
+									<input type="hidden" name="add" value="1" />
+									<input type="hidden" name="w3ls_item" value="{{ p.nome }}" />
+									<input type="hidden" name="amount" value="{{ p.preco_desconto }}"/>
+									<button type="submit" class="w3ls-cart">Adicionar Ao Carrinho</button>
+								</form>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+    {% endfor %}

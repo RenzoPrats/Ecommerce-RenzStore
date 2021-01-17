@@ -1,0 +1,143 @@
+{% load static %}
+        <div class="mobiles">
+		<div class="container">
+			<div class="w3ls_mobiles_grids">
+				<div class="col-md-4 w3ls_mobiles_grid_left">
+					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Categorias</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							  <div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+								  <h4 class="panel-title asd">
+									<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Lançamentos
+									</a>
+								  </h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								  <div class="panel-body panel_text">
+									<ul>
+										<li><a href="?order=smartphone">SmartPhones</a></li>
+										<li><a href="{% url 'products1' %}?order=notebooks">Notebooks</a></li>
+                                        <li><a href="{% url 'products2' %}?order=tv">Tv's</a></li>
+										<li><a href="{% url 'products1' %}?order=smartwatches">SmartWatches</a></li>
+										<li><a href="{% url 'products2' %}?order=refrigeradores">Refrigeradores</a></li>
+									</ul>
+								  </div>
+								</div>
+							  </div>
+							  <div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingTwo">
+								  <h4 class="panel-title asd">
+									<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>Acessórios
+									</a>
+								  </h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+								   <div class="panel-body panel_text">
+									<ul>
+										<li><a href="{% url 'products2' %}?order=trituradores">Trituradores</a></li>
+										<li><a href="{% url 'products2' %}?order=aquecedores">Aquecedores</a></li>
+										<li><a href="{% url 'products2' %}?order=brinquedos_infantis">Brinquedos Infantis</a></li>
+										<li><a href="{% url 'products2' %}?order=filtros">Filtros</a></li>
+										<li><a href="{% url 'products2' %}?order=ac">AC</a></li>
+									</ul>
+								  </div>
+								</div>
+							  </div>
+							</div>
+							<ul class="panel_bottom">
+								<li><a href="?order=loja_de_verao">Loja de Verão</a></li>
+								<li><a href="?order=marcas_em_destaque">Marcas em Destaque</a></li>
+								<li><a href="?order=ofertas_do_dia">Ofertas do Dia</a></li>
+								<li><a href="{% url 'products1' %}?order=novos_smartwatches">Novos SmartWatches</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="w3ls_mobiles_grid_left_grid">
+						<h3>Preço</h3>
+						<div class="w3ls_mobiles_grid_left_grid_sub">
+							<div class="ecommerce_color ecommerce_size">
+								<ul>
+                                    <li><a href="?order={{ ord }}&preco=100">Até R$100</a></li>
+									<li><a href="?order={{ ord }}&preco=500">R$ 100-500</a></li>
+									<li><a href="?order={{ ord }}&preco=10000">R$ 500-10000</a></li>
+									<li><a href="?order={{ ord }}&preco=20000">R$ 10000-20000</a></li>
+									<li><a href="?order={{ ord }}&preco=20001">R$ Acima de 20000</a></li>
+                                    <li><a href="{% url 'products' %}?order={{ ord }}">Limpar Filtros</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 w3ls_mobiles_grid_right">
+					<div class="col-md-6 w3ls_mobiles_grid_right_left">
+						<div class="w3ls_mobiles_grid_right_grid1">
+							<img src="{% static 'images/46.jpg' %}" alt=" " class="img-responsive" />
+							<div class="w3ls_mobiles_grid_right_grid1_pos1">
+								<h3>SmartPhones<span>Com </span> 35% De Desconto</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 w3ls_mobiles_grid_right_left">
+						<div class="w3ls_mobiles_grid_right_grid1">
+							<img src="{% static 'images/47.jpg' %}" alt=" " class="img-responsive" />
+							<div class="w3ls_mobiles_grid_right_grid1_pos">
+								<h3>Top 10 Novos<span>SmartPhones</span>& Accessórios</h3>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+
+					<div class="w3ls_mobiles_grid_right_grid2">
+						<div class="w3ls_mobiles_grid_right_grid2_left">
+							<h3>Mostrando Resultados: </h3>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+
+                    {% for p in page_obj|slice:"9" %}
+                        {% if forloop.first %}
+                            <div class="w3ls_mobiles_grid_right_grid3">
+                        {% endif %}
+
+                        {% if forloop.counter0|divisibleby:"3" and not forloop.first %}
+                            <div class="w3ls_mobiles_grid_right_grid3">
+                        {% endif %}
+
+                                <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
+                                    <div class="agile_ecommerce_tab_left mobiles_grid">
+                                        <div class="hs-wrapper hs-wrapper2">
+                                            <img src="{{ p.imagem1.thumb.url }}" alt=" " class="img-responsive" />
+                                        </div>
+                                        <h5><a href="{% url 'single' p.pk %}">{{ p.nome }}</a></h5>
+                                        <div class="simpleCart_shelfItem">
+                                            <p><span>R${{ p.preco }}</span> <i class="item_price">R${{ p.preco_desconto }}</i></p>
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="w3ls_item" value="{{ p.nome }}" />
+                                                <input type="hidden" name="amount" value="{{ p.preco_desconto }}"/>
+                                                <button type="submit" class="w3ls-cart">Adicionar Ao Carrinho</button>
+                                            </form>
+                                        </div>
+                                        {% if p.criados >= data%}
+                                        <div class="mobiles_grid_pos">
+                                            <h6>Novo</h6>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                        {% if forloop.counter|divisibleby:"3" %}
+                                <div class="clearfix"> </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
