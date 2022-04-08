@@ -3,7 +3,7 @@ This is an E-commerce made with Django(python) for study purpose. It has a syste
 Also has a system for search products and add to the cart.
 
 ## Compilation
-On linux you can compile and run in the project folder using:
+On linux you can run in the project folder using:
 ```shell
 pip install -r requirements.txt
 python manage.py runserver
